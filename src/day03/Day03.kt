@@ -1,3 +1,8 @@
+package day03
+
+import println
+import readInput
+
 private val RegexPart = "\\d+".toRegex()
 private val RegexSymbol = "[^\\.^\\d]".toRegex()
 
@@ -103,11 +108,11 @@ fun main() {
     }
 
     // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day03_test")
+    val testInput = readInput("day03/test")
     check(part1(testInput) == 4361) { "Check part 1" }
     check(part2(testInput) == 467835) { "Check part 2" }
 
-    val input = readInput("Day03")
+    val input = readInput("day03/input")
     part1(input).println()
     part2(input).println()
 }

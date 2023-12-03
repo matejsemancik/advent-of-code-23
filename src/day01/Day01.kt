@@ -1,3 +1,8 @@
+package day01
+
+import println
+import readInput
+
 private val LookupTable = mapOf(
     "one" to "o1e",
     "two" to "t2o",
@@ -42,12 +47,12 @@ fun main() {
     }
 
     // test if implementation meets criteria from the description, like:
-    val part1TestInput = readInput("Day01_part1_test")
-    val part2TestInput = readInput("Day01_part2_test")
+    val part1TestInput = readInput("day01/test_part1")
+    val part2TestInput = readInput("day01/test_part2")
     check(part1(part1TestInput) == 142) { "Test part1" }
     check(part2(part2TestInput) == 281) { "Test part2" }
 
-    val input = readInput("Day01")
+    val input = readInput("day01/input")
     part1(input).println()
     part2(input).println()
 }

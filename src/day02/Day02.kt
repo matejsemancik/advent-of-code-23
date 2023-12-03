@@ -1,3 +1,8 @@
+package day02
+
+import println
+import readInput
+
 private data class Game(
     val id: Int,
     val sets: List<GameSet>
@@ -62,11 +67,11 @@ fun main() {
     }
 
     // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day02_test")
+    val testInput = readInput("day02/test")
     check(part1(testInput) == 8) { "Check part 1" }
     check(part2(testInput) == 2286) { "check part 2" }
 
-    val input = readInput("Day02")
+    val input = readInput("day02/input")
     part1(input).println()
     part2(input).println()
 }
