@@ -10,18 +10,6 @@ private data class Mapping(
     val destRange: LongRange
 )
 
-private val RegexParser =
-    "seeds: (.+)\\n\\nseed-to-soil map:\\n((.|\\n)+)\\n\\nsoil-to-fertilizer map:\\n((.|\\n)+)\\n\\nfertilizer-to-water map:\\n((.|\\n)+)\\n\\nwater-to-light map:\\n((.|\\n)+)\\n\\nlight-to-temperature map:\\n((.|\\n)+)\\n\\ntemperature-to-humidity map:\\n((.|\\n)+)\\n\\nhumidity-to-location map:\\n((.|\\n)+)".toRegex()
-
-private val SeedsRegex = "seeds: (.+)".toRegex()
-private val SeedToSoilRegex = "seed-to-soil map:\\n((.|\\n)+)\\n\\nsoil".toRegex()
-private val SoilToFertilizerRegex = "soil-to-fertilizer map:\\n((.|\\n)+)\\n\\nfertilizer".toRegex()
-private val FertilizerToWater = "fertilizer-to-water map:\\n((.|\\n)+)\\n\\nwater".toRegex()
-private val WaterToLightRegex = "water-to-light map:\\n((.|\\n)+)\\n\\nlight".toRegex()
-private val LightToTemperatureRegex = "light-to-temperature map:\\n((.|\\n)+)\\n\\ntemperature".toRegex()
-private val TemperatureToHumidityRegex = "temperature-to-humidity map:\\n((.|\\n)+)\\n\\nhumidity".toRegex()
-private val HumidityToLocation = "humidity-to-location map:\\n((.|\\n)+)".toRegex()
-
 private fun String.toMapping(): Mapping {
     val (dest, src, size) = findLongs()
     return Mapping(
