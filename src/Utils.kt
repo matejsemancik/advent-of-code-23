@@ -3,6 +3,8 @@ import java.security.MessageDigest
 import kotlin.io.path.Path
 import kotlin.io.path.readLines
 
+private val RegexNumber = "\\d+".toRegex()
+
 /**
  * Reads lines from the given input txt file.
  */
@@ -19,3 +21,20 @@ fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteA
  * The cleaner shorthand for printing output.
  */
 fun Any?.println() = println(this)
+
+/**
+ * Finds all integers in String.
+ */
+fun String.findIntegers(): List<Int> = RegexNumber.findAll(this).map { it.value.toInt() }.toList()
+
+fun String.findLongs(): List<Long> = RegexNumber.findAll(this).map { it.value.toLong() }.toList()
+
+/**
+ * Splits String by new line delimiter.
+ */
+fun String.splitByNewLine(): List<String> = split("\n")
+
+/**
+ * Returns first matching group for provided [input].
+ */
+fun Regex.firstGroup(input: CharSequence) = find(input)?.groupValues?.get(1) ?: error("Could not match provided input")
