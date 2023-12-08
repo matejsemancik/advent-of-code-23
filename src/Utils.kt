@@ -2,6 +2,7 @@ import java.math.BigInteger
 import java.security.MessageDigest
 import kotlin.io.path.Path
 import kotlin.io.path.readLines
+import kotlin.math.max
 
 private val RegexNumber = "\\d+".toRegex()
 
@@ -38,3 +39,25 @@ fun String.splitByNewLine(): List<String> = split("\n")
  * Returns first matching group for provided [input].
  */
 fun Regex.firstGroup(input: CharSequence) = find(input)?.groupValues?.get(1) ?: error("Could not match provided input")
+
+/**
+ * Finds least common multiple between two numbers.
+ */
+fun lcm(a: Long, b: Long): Long {
+    val larger = max(a, b)
+    val maxLcm = a * b
+    var lcm = larger
+    while (lcm <= maxLcm) {
+        if (lcm % a == 0L && lcm % b == 0L) {
+            return lcm
+        }
+        lcm += larger
+    }
+
+    return maxLcm
+}
+
+/**
+ * Finds least common multiple between all numbers in this [Collection].
+ */
+fun Collection<Long>.lcm() = reduce { acc, l -> lcm(acc, l) }
