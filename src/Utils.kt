@@ -4,7 +4,7 @@ import kotlin.io.path.Path
 import kotlin.io.path.readLines
 import kotlin.math.max
 
-private val RegexNumber = "\\d+".toRegex()
+private val RegexNumber = "-?\\d+".toRegex()
 
 /**
  * Reads lines from the given input txt file.
