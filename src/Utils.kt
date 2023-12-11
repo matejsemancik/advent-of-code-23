@@ -61,3 +61,15 @@ fun lcm(a: Long, b: Long): Long {
  * Finds least common multiple between all numbers in this [Collection].
  */
 fun Collection<Long>.lcm() = reduce { acc, l -> lcm(acc, l) }
+
+/**
+ * Performs test which pretty prints results.
+ */
+fun <T : Any> test(name: String, expected: T, actual: () -> T) {
+    val actualValue = actual()
+    if (expected != actualValue) {
+        println("❌ \u001B[31m$name test FAILED, expected: $expected but was $actualValue\u001B[0m")
+    } else {
+        println("✅ \u001B[32m$name test OK: $actualValue\u001B[0m")
+    }
+}
