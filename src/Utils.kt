@@ -73,3 +73,32 @@ fun <T : Any> test(name: String, expected: T, actual: () -> T) {
         println("✅ \u001B[32m$name test OK: $actualValue\u001B[0m")
     }
 }
+
+/**
+ * A simple class to represent coordinates in unit space.
+ */
+@JvmInline
+value class Coords private constructor(private val wrapped: IntArray) {
+
+    constructor(x: Int, y: Int) : this(intArrayOf(y, x))
+
+    val y: Int get() = wrapped[0]
+    val x: Int get() = wrapped[1]
+
+    override fun toString(): String = "[$x,$y]"
+}
+
+/**
+ * Returns all distinct pairs of elements in collection.
+ */
+fun <T : Any> List<T>.pairs(): Set<Pair<T, T>> {
+    val pairs = mutableSetOf<Pair<T, T>>()
+
+    for (i in indices) {
+        for (j in i + 1 until size) {
+            pairs.add(get(i) to get(j))
+        }
+    }
+
+    return pairs
+}
